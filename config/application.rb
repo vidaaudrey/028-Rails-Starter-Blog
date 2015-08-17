@@ -21,3 +21,9 @@ module Blog
     # config.i18n.default_locale = :de
   end
 end
+
+Blog::Application.configure do
+  config.jade.pretty = true
+  config.jade.compile_debug = true
+  config.jade.globals = ['helpers']
+end
