@@ -1,0 +1,21 @@
+
+<%= form_for @chef do |f| %>
+  <p>
+    <%= f.label :chefname %><br>
+    <%= f.text_field :chefname %>
+  </p>
+  <p>
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </p>
+
+
+  <p>
+    <%= f.submit @chef.new_record? ? 'Register' : 'Edit Profile', class: "btn btn-success" %>
+  </p>
+<% end %>
