@@ -19,5 +19,16 @@ Rails.application.routes.draw do
       post 'like'
     end
   end 
+
+  #we want the 'new' route to go to the register, so use except
+  resources :chefs, except: [:new]
+  get '/register', to: 'chefs#new'
+
+  # login -> new session
+  # logout -> close session 
+  # post login -> create session 
+  get 'login', to: 'logins#new'
+  post 'login', to:'logins#create'
+  get 'logout', to: 'logins#destroy'
  
 end

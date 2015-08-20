@@ -7,9 +7,9 @@
 			<div class="row">
 				<div class="col-md-2">
 					<section class="chef_info center">
-						<%= gravatar_for recipe.chef %>
+						<%= link_to gravatar_for(recipe.chef, size:100), chef_path(recipe.chef) %>
 						<h5>Chef name:<%= recipe.name %></h5>
-
+						
 					</section>
 				</div>
 
@@ -38,6 +38,6 @@
 
 			</div>
 		<% end %>
-	<%= will_paginate %>
+
 
 </div>

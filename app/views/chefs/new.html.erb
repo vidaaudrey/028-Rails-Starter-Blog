@@ -1,0 +1,11 @@
+<%= render 'shared/title', title: "Register an Account" %>
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 well">
+        
+        <%= render 'shared/error', obj: @chef %>
+        <%= render 'form' %>
+        <%= link_to 'Back', recipes_path %>
+
+    </div>
+</div>
