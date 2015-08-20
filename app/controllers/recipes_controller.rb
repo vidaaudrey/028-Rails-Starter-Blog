@@ -3,7 +3,8 @@ class RecipesController < ApplicationController
   # except: [:index, :show]
   
   def index 
-    @recipes = Recipe.all 
+    # @recipes = Recipe.all.sort_by{|likes| likes.thumbs_up_total}.reverse
+    @recipes = Recipe.paginate(page: params[:page], per_page: 10)
   end 
 
   def show
@@ -39,10 +40,21 @@ class RecipesController < ApplicationController
       render 'edit'
     end 
   end
+
+  def like
+    @recipe = Recipe.find(params[:id])
+    like = Like.create(like: params[:like], chef: Chef.first, recipe: @recipe)
+    if like.valid? 
+      flash[:success] = "Your like selection was successful"
+    else 
+      flash[:danger] = "You can only like or dislike once"
+    end   
+    redirect_to :back
+  end
   
 
   private
     def recipe_params
-      params.require(:recipe).permit(:name, :summary, :description, :chef_id, :picture)
+      params.require(:recipe).permit(:name, :summary, :description, :chef_id, :picture, :like)
     end
 end
