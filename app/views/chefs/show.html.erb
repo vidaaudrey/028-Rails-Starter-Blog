@@ -13,6 +13,14 @@
 			<div class="col-md-6 well col-md-offset-3">
 				<h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
 				<p><%= recipe.summary %></p>
+					
+				<% if recipe.styles.any? %>
+					Styles: <%= render recipe.styles %> <br/>
+				<% end %>
+				<% if recipe.ingredients.any? %>
+					Ingredients: <%= render recipe.ingredients %>
+				<% end %>
+
 				<p>
 					<span class="quiet"><small>Created <%= time_ago_in_words(recipe.created_at) %> ago. </small></span>
 					<span class="quiet"><small>Updated <%= time_ago_in_words(recipe.updated_at) %> ago.</small></span>

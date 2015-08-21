@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end 
 
   #we want the 'new' route to go to the register, so use except
-  resources :chefs, except: [:new]
+  resources :chefs, except: [:new, :destroy]
   get '/register', to: 'chefs#new'
 
   # login -> new session
