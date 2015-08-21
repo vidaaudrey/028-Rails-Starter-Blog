@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20150820020143) do
+ActiveRecord::Schema.define(version: 20150821171401) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -40,6 +39,10 @@ ActiveRecord::Schema.define(version: 20150820020143) do
 
   add_index "comments", ["article_id"], name: "index_comments_on_article_id"
 
+  create_table "ingredients", force: true do |t|
+    t.string "name"
+  end
+
   create_table "likes", force: true do |t|
     t.boolean  "like"
     t.integer  "chef_id"
@@ -48,10 +51,21 @@ ActiveRecord::Schema.define(version: 20150820020143) do
     t.datetime "updated_at"
   end
 
-
   create_table "members", force: true do |t|
-    t.string "username"
-    t.string "email"
+    t.string   "username"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "recipe_ingredients", force: true do |t|
+    t.integer "ingredient_id"
+    t.integer "recipe_id"
+  end
+
+  create_table "recipe_styles", force: true do |t|
+    t.integer "style_id"
+    t.integer "recipe_id"
   end
 
   create_table "recipes", force: true do |t|
@@ -62,6 +76,10 @@ ActiveRecord::Schema.define(version: 20150820020143) do
     t.datetime "updated_at"
     t.integer  "chef_id"
     t.string   "picture"
+  end
+
+  create_table "styles", force: true do |t|
+    t.string "name"
   end
 
   create_table "users", force: true do |t|

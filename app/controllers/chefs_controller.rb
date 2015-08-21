@@ -2,7 +2,7 @@ class ChefsController < ApplicationController
   
   # refactoring 
   # before_action :set_chef, only:[:create, :edit, :update]
-  before_action :set_chef, only:[ :edit, :update]
+  before_action :set_chef, only:[ :edit, :update, :show]
   before_action :require_same_user, only:[:edit, :upate]
 
   def index
@@ -39,7 +39,7 @@ class ChefsController < ApplicationController
   end
   
   def show
-    @chef = Chef.find(params[:id])
+    # @chef = Chef.find(params[:id])
     @recipes = @chef.recipes.paginate(page: params[:page], per_page: 3)
   end
 

@@ -40,7 +40,7 @@ class RecipesController < ApplicationController
   def update
     # @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
-      redirect_to chef_path(@chef)
+      redirect_to chef_path(@recipe.chef)
     else 
       render 'edit'
     end 
