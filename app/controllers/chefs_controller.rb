@@ -1,7 +1,8 @@
 class ChefsController < ApplicationController
   
   # refactoring 
-  before_action :set_chef, only:[:create, :edit, :update]
+  # before_action :set_chef, only:[:create, :edit, :update]
+  before_action :set_chef, only:[ :edit, :update]
   before_action :require_same_user, only:[:edit, :upate]
 
   def index
@@ -13,7 +14,7 @@ class ChefsController < ApplicationController
   end
 
   def create
-    # @chef = Chef.new(chef_params)
+     @chef = Chef.new(chef_params)
     if @chef.save
       flash[:success] = "You account has been created successfully"
       redirect_to recipes_path 

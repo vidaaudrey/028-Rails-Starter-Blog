@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   #we want the 'new' route to go to the register, so use except
   resources :chefs, except: [:new]
   get '/register', to: 'chefs#new'
+  post 'register', to: 'chefs#create'
 
   # login -> new session
   # logout -> close session 
