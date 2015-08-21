@@ -1,0 +1,11 @@
+
+<%= form_for @style do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit "Create Style", class: "btn btn-success" %>
+  </p>
+<% end %>

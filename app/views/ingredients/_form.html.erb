@@ -1,0 +1,11 @@
+
+<%= form_for @ingredient do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit "Create Ingredient", class: "btn btn-success" %>
+  </p>
+<% end %>

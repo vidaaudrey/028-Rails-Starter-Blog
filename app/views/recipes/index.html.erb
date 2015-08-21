@@ -1,6 +1,5 @@
 <div class="container">
 	<%= render 'shared/title', title: "All Recipes" %>
-	<%= link_to "Create Recipe", new_recipe_path %>
 	<hr/>
 	<%= will_paginate %>
 		<% @recipes.each do |recipe| %>
@@ -16,6 +15,10 @@
 				<div class="col-md-6 well">
 					<h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
 					<p><%= recipe.summary %></p>
+
+					Styles: <%= render recipe.styles %> <br/>
+					Ingredients: <%= render recipe.ingredients %>
+
 					<p>
 						<span class="quiet"><small>Created <%= time_ago_in_words(recipe.created_at) %> ago. </small></span>
 						<span class="quiet"><small>Updated <%= time_ago_in_words(recipe.updated_at) %> ago.</small></span>

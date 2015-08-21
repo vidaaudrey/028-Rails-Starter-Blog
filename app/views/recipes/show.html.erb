@@ -1,4 +1,4 @@
-<h1><%= @recipe.name %></h1>
+<%= render 'shared/title', title: "Recipe: " + @recipe.name %>
 
 <div class="row">
 	<div class="col-md-4 pull-right center">
@@ -12,7 +12,9 @@
 		<% end %>
 
 		<h3><%= @recipe.summary %></h3>
-
+		
+		Styles: <%= render @recipe.styles %> <br/>
+		Ingredients: <%= render @recipe.ingredients %>
 
 		<div class="show_recipe">
 			<%= image_tag(@recipe.picture, size: "250x150", class:"gravatar") if @recipe.picture? %>
