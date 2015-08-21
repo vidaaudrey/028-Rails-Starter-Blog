@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :comments
   end
  
-  root 'welcome#index'
+  root 'recipes#index'
 
   # get '/recipes', to:'recipes#index'
   # get 'recipes/new', to: 'recipes#new', as: 'new_recipe'
@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   #we want the 'new' route to go to the register, so use except
   resources :chefs, except: [:new]
   get '/register', to: 'chefs#new'
-  post 'register', to: 'chefs#create'
 
   # login -> new session
   # logout -> close session 
