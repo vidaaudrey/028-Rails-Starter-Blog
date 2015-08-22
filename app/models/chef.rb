@@ -3,7 +3,8 @@ class Chef < ActiveRecord::Base
   # belongs_to :user 
   # validates :title, presence: true, length: { minimum: 5 }
   has_many :recipes
-  has_many :likes
+  has_many :likes, dependent: :destroy 
+  has_many :reviews, dependent: :destroy 
   
 
   before_save {self.email = email.downcase}  #callback, the second self can be omitted

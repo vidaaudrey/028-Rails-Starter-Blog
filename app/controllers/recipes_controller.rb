@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   # http_basic_authenticate_with name: "mh", password: "secret",
   # except: [:index, :show]
   # set recipe must be before require_same_user 
-  before_action :set_recipe, only: [:edit, :update, :like, :show]
+  before_action :set_recipe, only: [:edit, :update, :like, :show, :review]
   before_action :require_user, except: [:show, :index, :like]
   before_action :require_user_like, only: [:like]
   before_action :require_same_user, only:[:edit, :upate]
@@ -65,7 +65,24 @@ class RecipesController < ApplicationController
     flash[:success] = "Recipe deleted"
     redirect_to recipes_path
   end
-  
+
+  def review
+    @recipe = Recipe.find(params[:id])
+    review = Review.create(body: params[:body], chef: current_user, recipe: @recipe)
+    if review.valid?
+      flash[:success] = "Thank you for reviewing this recipe"
+    else
+      flash[:danger] = "Review failed to post"
+    end
+    redirect_to :back
+  end
+
+  def deletereview
+    Review.find(params[:review_id]).destroy
+    flash[:success] = "Review deleted"
+    redirect_to :back
+  end
+
 
   private
     def recipe_params
